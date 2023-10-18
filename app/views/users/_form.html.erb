@@ -1,26 +1,31 @@
-<%= turbo_frame_tag 'user' do %>
-  <%= form_with model: @user, local: false do |form| %>
-    <div class="modal-body">
-      <div class="form-group">
-        <%= form.label :name,  style: "display: block" %>
-        <%= form.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= form.label :email, style: "display: block" %>
-        <%= form.text_field :email, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= form.label :address, style: "display: block" %>
-        <%= form.text_field :address, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= form.label :contact, style: "display: block" %>
-        <%= form.text_field :contact, class: "form-control" %>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>        
-      <%= form.submit class: "btn btn-primary btn-lg" %>
-    </div>     
-  <% end %>
-<% end %>     
+<%= turbo_frame_tag :users, target: :_top do %>
+  
+        <%= form_with model: user,id: dom_id(user), local: false , controller: "new-user" do |form| %>
+          <div class="modal-body">
+            <div class="form-group mt-3">
+              <%= form.label :name,  style: "display: block", for: "name-id"  %>
+              <%= form.text_field :name, class: "form-control",id: "name-id", autocomplete: "name" %>
+            </div>
+            <div class="form-group mt-3">
+              <%= form.label :email, style: "display: block", for: "email-id"  %>
+              <%= form.text_field :email, class: "form-control", id: "email-id", autocomplete: "email"  %>
+            </div>
+            <div class="form-group mt-3">
+              <%= form.label :address, style: "display: block", for: "address-id" %>
+              <%= form.text_field :address, class: "form-control", id: "address-id", autocomplete: "address" %>
+            </div>
+            <div class="form-group mt-3">
+              <%= form.label :contact, style: "display: block", for: "contact-id" %>
+              <%= form.text_field :contact, class: "form-control", id: "contact-id", autocomplete: "contact"  %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>        
+            <%= form.submit class: "btn btn-primary btn-lg", id: "submit-id", data: {action: 'users_controller#create'} %>
+          </div>    
+        <% end %>
+
+<% end %>
+
+  
+

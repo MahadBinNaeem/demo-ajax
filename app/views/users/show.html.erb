@@ -6,10 +6,10 @@
       <%= render @user %>
 
       <div>
-        <%= link_to "Edit this user", edit_user_path(@user) %> |
-        <%= link_to "Back to users", users_path %>
+        <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary btn-lg" %> |
+        <%= link_to "Back to users", users_path , class: "btn btn-outline-primary btn-lg" %> |
 
-        <%= button_to "Destroy this user", @user, method: :delete %>
+        <%= link_to "Destroy this user", @user, method: :delete, class: "btn btn-danger btn-lg"  %>
       </div>
     </div>
   </div>
