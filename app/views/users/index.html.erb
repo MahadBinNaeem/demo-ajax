@@ -1,14 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 mt-5">
+      <h1>Users</h1>
 
-<h1>Users</h1>
+      <div id="users">
+        <% @users.each do |user| %>
+          <%= render user %>
+            <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"  aria-expanded="false">
+            CRUD
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><%= link_to "Show", user, class: "dropdown-item" %></li>
+              <li><%= link_to "Edit", edit_user_path(user), class: "dropdown-item" %></li>
+              <li> <%= button_to "Destroy", user, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item " %></li>
+            </ul>
+          </div>
+          <br>
+          <br>
+        <% end %>
+      </div>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
-</div>
+      <%= link_to "New user", new_user_path %>
 
-<%= link_to "New user", new_user_path %>
+    </div>
+  </div>
