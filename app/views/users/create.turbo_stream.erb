@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'user_form', partial: 'users/form', locals: { user: User.new } %>
+<% if @user.errors.any? %>
+  <%= turbo_stream.append 'flash-messages', partial: 'shared/flash', locals: { message: 'User creation failed. Please check your input.' } %>
+  console.log("triggered")
+<% end %>
